@@ -1,0 +1,14 @@
+<div class="navbar-container">
+    <h3 routerLink="/">W-Movies</h3>
+    <div class="navbar-items">
+        <app-button *ngFor="let route of routes.slice(0, routes.length - 1)" [text]="route" (btnClick)="changeRoute(route)"></app-button>
+    </div>
+    <div class="navbar-icon" (click)="toggleDropdown()">
+        <fa-icon [icon]="faBars"></fa-icon>
+    </div>
+</div>
+<div [hidden]="!showDropdown">
+    <div class="dropdown-menu">
+        <a *ngFor="let route of routes.slice(0, routes.length - 1)" [routerLink]="[route === 'Home' ? '/' : route]" (click)="toggleDropdown()">{{route}}</a>
+    </div>
+</div>
